@@ -1,0 +1,1 @@
+# KAIM-solar-challenge-week0
