@@ -1,20 +1,19 @@
 # ☀️ KAIM Solar Challenge – Week 0
 
 Welcome to the **KAIM Solar Challenge – Week 0** repository!  
-This project provides the foundation for the KAIM Solar Challenge, focusing on environment setup, project organization, and preparing for the exciting weeks ahead.
+This project provides a robust, modular pipeline for solar data analysis across West African countries, featuring reproducible code, cross-country comparison, and an interactive dashboard.
 
 ---
 
-## 📊 About the Project
+## 📊 Project Overview
 
-This repository is structured to support a robust data science workflow for solar energy analysis. It includes:
+This repository enables:
 
-- **Jupyter notebooks** for exploratory data analysis (EDA) of solar datasets from different regions (e.g., Benin, Sierra Leone).
-- **Python scripts** for data processing and utility functions.
-- **Unit tests** to ensure code reliability.
-- **CI/CD workflows** for automated testing and quality assurance.
-
-The project is designed for easy collaboration, reproducibility, and scalability as the challenge progresses.
+- **Modular data pipeline** for loading, cleaning, and visualizing solar datasets (Benin, Sierra Leone, Togo)
+- **Exploratory Data Analysis (EDA)** for each country
+- **Cross-country comparison** with statistical testing and visual summaries
+- **Interactive Streamlit dashboard** for dynamic exploration
+- **Comprehensive reporting** in both notebook and markdown/PDF formats
 
 ---
 
@@ -22,20 +21,20 @@ The project is designed for easy collaboration, reproducibility, and scalability
 
 ```
 KAIM-solar-challenge-week0/
-├── .github/workflows/      # GitHub Actions for CI/CD
-├── notebooks/              # Jupyter notebooks for data exploration (e.g., benin_eda.ipynb, sierraleone_eda.ipynb, togo_eda.ipynb)
-├── scripts/                # Python scripts for data processing/utilities
-├── tests/                  # Unit tests for code reliability
-├── .gitignore              # Ignore rules for version control
-├── README.md               # Project overview and setup instructions
-└── requirements.txt        # Python dependencies
+├── app/                    # Streamlit dashboard (main.py, utils.py)
+├── data/                   # Raw and cleaned CSVs (not included in repo)
+├── notebooks/              # Jupyter notebooks (EDA, comparison)
+├── solar_modules/          # Modular pipeline (data_loader, data_cleaner, visualizer, analyzer)
+├── tests/                  # Unit tests
+├── scripts/                # Utility scripts and documentation
+├── final_report.md         # Medium-style final report (PDF exportable)
+├── requirements.txt        # Python dependencies
+└── README.md               # Project overview and instructions
 ```
 
 ---
 
-## 🛠️ Getting Started
-
-Follow these steps to set up the project locally:
+## ��️ Getting Started
 
 ### 1. Clone the Repository
 
@@ -44,16 +43,16 @@ git clone https://github.com/Yihenew21/KAIM-solar-challenge-week0.git
 cd KAIM-solar-challenge-week0
 ```
 
-### 2. Create and Activate a Virtual Environment
+### 2. Set Up a Virtual Environment
 
-**For Windows:**
+**Windows:**
 
 ```bash
 python -m venv venv
 .\venv\Scripts\activate
 ```
 
-**For macOS/Linux:**
+**macOS/Linux:**
 
 ```bash
 python3 -m venv venv
@@ -66,70 +65,79 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### 4. Run Unit Tests
+---
 
-```bash
-python -m unittest discover tests
-```
+## 📒 Notebooks & Analysis
+
+- **notebooks/benin_eda.ipynb** – EDA and cleaning for Benin
+- **notebooks/sierraleone_eda.ipynb** – EDA and cleaning for Sierra Leone
+- **notebooks/togo_eda.ipynb** – EDA and cleaning for Togo
+- **notebooks/compare_countries.ipynb** – Cross-country comparison: boxplots, summary tables, ANOVA/Kruskal–Wallis, and insights
+
+Each notebook uses the modular pipeline for reproducibility and easy extension.
 
 ---
 
-## 📒 Notebooks Overview
+## 🧩 Modular Pipeline
 
-- **notebooks/benin_eda.ipynb**  
-  Exploratory data analysis and cleaning for Benin solar dataset, including outlier detection, imputation, and visualization.
+- **solar_modules/data_loader.py** – Loads and parses solar datasets
+- **solar_modules/data_cleaner.py** – Handles missing values and outliers
+- **solar_modules/visualizer.py** – Generates plots and visual summaries
+- **solar_modules/analyzer.py** – Orchestrates the full pipeline
 
-- **notebooks/sierraleone_eda.ipynb**  
-  EDA and cleaning for Sierra Leone solar dataset, with advanced visualizations (e.g., wind rose, bubble charts) and time series analysis.
+---
 
-- **notebooks/togo_eda.ipynb**  
-  EDA and cleaning for Togo solar dataset, including summary statistics, outlier handling, and visual analytics.
+## 📊 Cross-Country Comparison
 
-Each notebook is self-contained and demonstrates best practices for data cleaning, visualization, and reporting.
+- Loads cleaned data for Benin, Sierra Leone, and Togo
+- Produces side-by-side boxplots for GHI, DNI, DHI
+- Summary table of mean, median, std for each metric
+- Statistical testing (ANOVA, Kruskal–Wallis) with p-values
+- Bar chart ranking countries by average GHI
+- Key findings and actionable insights
+
+---
+
+## 🖥️ Interactive Dashboard
+
+- **app/main.py** – Streamlit app for dynamic exploration
+  - Select countries and metrics
+  - View boxplots, summary tables, and bar charts
+  - Clean, intuitive UI
+- To launch:
+  ```bash
+  streamlit run app/main.py
+  ```
 
 ---
 
 ## 🧪 Testing & Quality
 
-- All scripts and notebooks are designed to be tested using the `tests/` directory.
-- Continuous Integration (CI) is set up via GitHub Actions to automatically run tests on each push or pull request.
+- All modules and scripts are tested via the `tests/` directory
+- Continuous Integration (CI) with GitHub Actions for automated testing
 
 ---
 
-## 🚀 What's Next?
+## 📝 Reporting
 
-This Week 0 setup lays the groundwork for the upcoming phases of the KAIM Solar Challenge.  
-Future weeks will involve:
+- **final_report.md** – Medium-style final report (exportable to PDF)
+- All code, notebooks, and dashboard are documented for clarity and reproducibility
 
-- 📥 Data collection and preprocessing
-- 📊 Exploratory data analysis
-- 🤖 Model development and evaluation
-- 🚀 Deployment strategies
+---
 
-Stay tuned for updates and new contributions!
+## 🚀 Next Steps
+
+- Add new countries or metrics by updating the data and reusing the pipeline
+- Extend the dashboard with more interactive features
+- Deploy the dashboard to Streamlit Community Cloud
 
 ---
 
 ## 🤝 Contributing
 
-Contributions are welcome! To contribute:
-
-1. **Fork** the repository
-2. **Create a new branch**
-   ```bash
-   git checkout -b feature/your-feature-name
-   ```
-3. **Commit your changes**
-   ```bash
-   git commit -m "Add your feature"
-   ```
-4. **Push to your branch**
-   ```bash
-   git push origin feature/your-feature-name
-   ```
-5. **Open a pull request**
-
-Please ensure your code follows the project's coding standards and includes relevant tests.
+Contributions are welcome!  
+Please fork the repo, create a feature branch, and submit a pull request.  
+See the guidelines in this README for details.
 
 ---
 
@@ -141,7 +149,7 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## 📫 Contact
 
-For questions or suggestions, feel free to reach out:
+For questions or suggestions, reach out via:
 
 - GitHub: [@Yihenew21](https://github.com/Yihenew21)
 
